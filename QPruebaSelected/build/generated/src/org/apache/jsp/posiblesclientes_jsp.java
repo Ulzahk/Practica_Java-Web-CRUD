@@ -1,0 +1,541 @@
+package org.apache.jsp;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.jsp.*;
+import java.sql.*;
+import java.util.*;
+
+public final class posiblesclientes_jsp extends org.apache.jasper.runtime.HttpJspBase
+    implements org.apache.jasper.runtime.JspSourceDependent {
+
+  private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
+
+  private static java.util.List<String> _jspx_dependants;
+
+  private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
+
+  public java.util.List<String> getDependants() {
+    return _jspx_dependants;
+  }
+
+  public void _jspService(HttpServletRequest request, HttpServletResponse response)
+        throws java.io.IOException, ServletException {
+
+    PageContext pageContext = null;
+    HttpSession session = null;
+    ServletContext application = null;
+    ServletConfig config = null;
+    JspWriter out = null;
+    Object page = this;
+    JspWriter _jspx_out = null;
+    PageContext _jspx_page_context = null;
+
+    try {
+      response.setContentType("text/html;charset=UTF-8");
+      pageContext = _jspxFactory.getPageContext(this, request, response,
+      			null, true, 8192, true);
+      _jspx_page_context = pageContext;
+      application = pageContext.getServletContext();
+      config = pageContext.getServletConfig();
+      session = pageContext.getSession();
+      out = pageContext.getOut();
+      _jspx_out = out;
+      _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
+
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("    <head>\n");
+      out.write("        <meta charset=\"utf-8\">\n");
+      out.write("        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n");
+      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n");
+      out.write("        <meta name=\"description\" content=\"\">\n");
+      out.write("        <meta name=\"author\" content=\"\">\n");
+      out.write("\n");
+      out.write("        <title>Posibles Clientes</title>\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">\n");
+      out.write("        <script src=\"https://kit.fontawesome.com/a076d05399.js\"></script>\n");
+      out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>\n");
+      out.write("        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>\n");
+      out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>\n");
+      out.write("        <script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>\n");
+      out.write("\n");
+      out.write("    </head>\n");
+      out.write("    <body>\n");
+      out.write("        ");
+
+            Models.clsPosiblesClientes obclsPosiblesClientes = new Models.clsPosiblesClientes();
+            
+            if(request.getAttribute("obclsPosiblesClientes")!=null){
+                obclsPosiblesClientes = (Models.clsPosiblesClientes) request.getAttribute("obclsPosiblesClientes");
+            }
+                    
+            List<Models.clsPosiblesClientes> lstclsPosiblesClientes
+                    = new ArrayList<Models.clsPosiblesClientes>();
+            
+            //Existencia de la variable de sesion
+            if(session.getAttribute("session_lstclsPosiblesClientes")!=null){
+                //Casting para un tipo de dato a la variable session
+                lstclsPosiblesClientes=(List<Models.clsPosiblesClientes>) session.getAttribute("session_lstclsPosiblesClientes");
+            }
+            
+            if(request.getAttribute("stMensaje")!=null 
+                    && request.getAttribute("stTipo")!=null){
+                
+            
+        
+      out.write("\n");
+      out.write("        <input type=\"text\" hidden=\"\" id=\"txtMensaje\" value=\"");
+      out.print(request.getAttribute("stMensaje"));
+      out.write("\"/>\n");
+      out.write("        \n");
+      out.write("        <input type=\"text\" hidden=\"\" id=\"txtTipo\" value=\"");
+      out.print(request.getAttribute("stTipo"));
+      out.write("\"/>\n");
+      out.write("        \n");
+      out.write("        <script>\n");
+      out.write("            var mensaje = document.getElementById(\"txtMensaje\").value;\n");
+      out.write("            var tipo = document.getElementById(\"txtTipo\").value;\n");
+      out.write("            \n");
+      out.write("            swal(\"Mensaje\", mensaje, tipo);\n");
+      out.write("        </script>\n");
+      out.write("        ");
+
+            }
+        
+      out.write("\n");
+      out.write("\n");
+      out.write("        <nav class=\"navbar navbar-expand-sm bg-dark navbar-dark\">\n");
+      out.write("            <!-- Brand -->\n");
+      out.write("            <a class=\"navbar-brand\" href=\"#\">Logo</a>\n");
+      out.write("\n");
+      out.write("            <!-- Links -->\n");
+      out.write("            <ul class=\"navbar-nav\">\n");
+      out.write("                <li class=\"nav-item\">\n");
+      out.write("                    <a class=\"nav-link\" href=\"#\">Link 1</a>\n");
+      out.write("                </li>\n");
+      out.write("                <li class=\"nav-item\">\n");
+      out.write("                    <a class=\"nav-link\" href=\"#\">Link 2</a>\n");
+      out.write("                </li>\n");
+      out.write("\n");
+      out.write("                <!-- Dropdown -->\n");
+      out.write("                <li class=\"nav-item dropdown\">\n");
+      out.write("                    <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbardrop\" data-toggle=\"dropdown\">\n");
+      out.write("                        Dropdown link\n");
+      out.write("                    </a>\n");
+      out.write("                    <div class=\"dropdown-menu\">\n");
+      out.write("                        <a class=\"dropdown-item\" href=\"posiblesclientes.jsp\">Posibles Clientes</a>\n");
+      out.write("                        <a class=\"dropdown-item\" href=\"#\">Link 2</a>\n");
+      out.write("                        <a class=\"dropdown-item\" href=\"login.jsp\">Salir</a>\n");
+      out.write("                    </div>\n");
+      out.write("                </li>\n");
+      out.write("            </ul>\n");
+      out.write("        </nav>\n");
+      out.write("\n");
+      out.write("        <div class=\"container\">\n");
+      out.write("            <div class=\"card mx-auto mt-5\">\n");
+      out.write("                <div class=\"card-header\">Crear Posibles Clientes</div>\n");
+      out.write("                <div class=\"card-body\">\n");
+      out.write("                    <form action=\"PosiblesClientesController\" method=\"POST\">\n");
+      out.write("                        <!--FILA-->\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <div class=\"form-row\">\n");
+      out.write("                                <!--COLUMNA-->\n");
+      out.write("                                <div class=\"col-md-6\"> \n");
+      out.write("                                    <input type=\"submit\" value=\"Guardar\" class=\"btn btn-primary\" name=\"btnGuardar\"/>\n");
+      out.write("                                    <input type=\"submit\" value=\"Modificar\" class=\"btn btn-primary\" name=\"btnModificar\"/>\n");
+      out.write("                                    <input type=\"submit\" value=\"Cancelar\" class=\"btn btn-primary\" name=\"btnCancelar\"/>\n");
+      out.write("                                    <input type=\"submit\" value=\"Volver\" class=\"btn btn-primary\" name=\"btnVolver\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                        <!--FILA-->\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <div class=\"form-row\">\n");
+      out.write("                                <h1>Información de Posible Cliente</h1>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                        <!--FILA-->\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <div class=\"form-row\">\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblEmpresa\">Empresa:</label>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"txtEmpresa\" placeholder=\"Empresa\"\n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getStEmpresa()!=null ? obclsPosiblesClientes.getStEmpresa() : "" );
+      out.write("\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblNombre\">Nombre:</label>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"txtNombre\" placeholder=\"Nombre\"\n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getStNombre()!=null ? obclsPosiblesClientes.getStNombre(): "");
+      out.write("\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblApellidos\">Apellidos:</label>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"txtApellidos\" placeholder=\"Apellidos\"\n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getStApellidos()!=null ? obclsPosiblesClientes.getStApellidos() : "");
+      out.write("\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblTitulo\">Titulo:</label>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"txtTitulo\" placeholder=\"Titulo\" \n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getStTitulo()!=null ? obclsPosiblesClientes.getStTitulo() : "");
+      out.write("\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                        <!--FILA-->\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <div class=\"form-row\">\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblCorreoElectronico\">Correo Electronico:</label>\n");
+      out.write("                                    <input type=\"email\" class=\"form-control\" name=\"txtCorreoElectronico\" placeholder=\"Correo Electronico\"\n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getStCorreoElectronico() !=null ? obclsPosiblesClientes.getStCorreoElectronico() : "");
+      out.write("\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblTelefono\">Teléfono:</label>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"txtTelefono\" placeholder=\"Telefono\"\n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getStTelefono()!=null ? obclsPosiblesClientes.getStTelefono(): "");
+      out.write("\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblFax\">Fax:</label>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"txtFax\" placeholder=\"Fax\"\n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getStFax()!=null ? obclsPosiblesClientes.getStFax(): "");
+      out.write("\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblMovil\">Movil:</label>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"txtMovil\" placeholder=\"Movil\"\n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getStMovil()!=null ? obclsPosiblesClientes.getStMovil(): "");
+      out.write("\">\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                        <!--FILA-->\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <div class=\"form-row\">\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblSitioWeb\">Sitio Web:</label>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"txtSitioWeb\" placeholder=\"Sitio Web\"\n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getStSitioWeb()!=null ? obclsPosiblesClientes.getStSitioWeb() : "");
+      out.write("\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblFuentePosibleCliente\">Fuente de Posible Cliente:</label>\n");
+      out.write("                                    <select class=\"form-control\" name=\"ddlFuentePosibleCliente\">\n");
+      out.write("                                        <option value=\"1\" ");
+      out.print( obclsPosiblesClientes.obclsFuentePosibleCliente !=null ? obclsPosiblesClientes.obclsFuentePosibleCliente.getInCodigo() == 1 ? "selected" : "" : "");
+      out.write(">Ninguno</option>\n");
+      out.write("                                        <option value=\"2\" ");
+      out.print( obclsPosiblesClientes.obclsFuentePosibleCliente !=null ? obclsPosiblesClientes.obclsFuentePosibleCliente.getInCodigo() == 2 ? "selected" : "" : "");
+      out.write(">Aviso</option>\n");
+      out.write("                                        <option value=\"3\" ");
+      out.print( obclsPosiblesClientes.obclsFuentePosibleCliente !=null ? obclsPosiblesClientes.obclsFuentePosibleCliente.getInCodigo() == 3 ? "selected" : "" : "");
+      out.write(">Llamada no solicitada</option>\n");
+      out.write("                                        <option value=\"4\" ");
+      out.print( obclsPosiblesClientes.obclsFuentePosibleCliente !=null ? obclsPosiblesClientes.obclsFuentePosibleCliente.getInCodigo() == 4 ? "selected" : "" : "");
+      out.write(">Recomendación de empleado</option>\n");
+      out.write("                                        <option value=\"5\" ");
+      out.print( obclsPosiblesClientes.obclsFuentePosibleCliente !=null ? obclsPosiblesClientes.obclsFuentePosibleCliente.getInCodigo() == 5 ? "selected" : "" : "");
+      out.write(">Recomendación externa</option>\n");
+      out.write("                                        <option value=\"6\" ");
+      out.print( obclsPosiblesClientes.obclsFuentePosibleCliente !=null ? obclsPosiblesClientes.obclsFuentePosibleCliente.getInCodigo() == 6 ? "selected" : "" : "");
+      out.write(">Tienda en linea</option>\n");
+      out.write("                                    </select>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblEstadoPosibleCliente\">Estado de Posible Cliente:</label>\n");
+      out.write("                                    <select class=\"form-control\" name=\"ddlEstadoPosibleCliente\">\n");
+      out.write("                                        <option value=\"1\" ");
+      out.print( obclsPosiblesClientes.obclsEstadoPosibleCliente !=null ? obclsPosiblesClientes.obclsEstadoPosibleCliente.getInCodigo() == 1 ? "selected" : "" : "");
+      out.write(">Ninguno</option>\n");
+      out.write("                                        <option value=\"2\" ");
+      out.print( obclsPosiblesClientes.obclsEstadoPosibleCliente !=null ? obclsPosiblesClientes.obclsEstadoPosibleCliente.getInCodigo() == 2 ? "selected" : "" : "");
+      out.write(">Intento de contacto</option>\n");
+      out.write("                                        <option value=\"3\" ");
+      out.print( obclsPosiblesClientes.obclsEstadoPosibleCliente !=null ? obclsPosiblesClientes.obclsEstadoPosibleCliente.getInCodigo() == 3 ? "selected" : "" : "");
+      out.write(">Contactar en el futuro</option>\n");
+      out.write("                                        <option value=\"4\" ");
+      out.print( obclsPosiblesClientes.obclsEstadoPosibleCliente !=null ? obclsPosiblesClientes.obclsEstadoPosibleCliente.getInCodigo() == 4 ? "selected" : "" : "");
+      out.write(">Contactado</option>\n");
+      out.write("                                        <option value=\"5\" ");
+      out.print( obclsPosiblesClientes.obclsEstadoPosibleCliente !=null ? obclsPosiblesClientes.obclsEstadoPosibleCliente.getInCodigo() == 5 ? "selected" : "" : "");
+      out.write(">Posible cliente no solicitado</option>\n");
+      out.write("                                        <option value=\"6\" ");
+      out.print( obclsPosiblesClientes.obclsEstadoPosibleCliente !=null ? obclsPosiblesClientes.obclsEstadoPosibleCliente.getInCodigo() == 6 ? "selected" : "" : "");
+      out.write(">Posible cliente perdido</option>\n");
+      out.write("                                    </select>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblSector\">Sector:</label>\n");
+      out.write("                                    <select class=\"form-control\" name=\"ddlSector\">\n");
+      out.write("                                        <option value=\"1\" ");
+      out.print( obclsPosiblesClientes.obclsSector!=null ? obclsPosiblesClientes.obclsSector.getInCodigo() == 1 ? "selected" : "" : "");
+      out.write(">Ninguno</option>\n");
+      out.write("                                        <option value=\"2\" ");
+      out.print( obclsPosiblesClientes.obclsSector!=null ? obclsPosiblesClientes.obclsSector.getInCodigo() == 2 ? "selected" : "" : "");
+      out.write(">APS (Proveedor de servicios de apliaciones)</option>\n");
+      out.write("                                        <option value=\"3\" ");
+      out.print( obclsPosiblesClientes.obclsSector!=null ? obclsPosiblesClientes.obclsSector.getInCodigo() == 3 ? "selected" : "" : "");
+      out.write(">OEM de datos</option>\n");
+      out.write("                                        <option value=\"4\" ");
+      out.print( obclsPosiblesClientes.obclsSector!=null ? obclsPosiblesClientes.obclsSector.getInCodigo() == 4 ? "selected" : "" : "");
+      out.write(">ERP (Planificación de recursos de empresa)</option>\n");
+      out.write("                                        <option value=\"5\" ");
+      out.print( obclsPosiblesClientes.obclsSector!=null ? obclsPosiblesClientes.obclsSector.getInCodigo() == 5 ? "selected" : "" : "");
+      out.write(">Gobierno/Ejercito</option>\n");
+      out.write("                                        <option value=\"6\" ");
+      out.print( obclsPosiblesClientes.obclsSector!=null ? obclsPosiblesClientes.obclsSector.getInCodigo() == 6 ? "selected" : "" : "");
+      out.write(">Empresa grande</option>\n");
+      out.write("                                    </select>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                        <!--FILA-->\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <div class=\"form-row\">\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblCantidadEmpleados\">Cantidad de empleados:</label>\n");
+      out.write("                                    <input type=\"number\" class=\"form-control\" name=\"txtCantidadEmpleados\" placeholder=\"Cantidad de empleados\"\n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getInCantidadEmpleados()!=0 ? obclsPosiblesClientes.getInCantidadEmpleados() : "");
+      out.write("\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblIngresosAnuales\">Ingresos anuales:</label>\n");
+      out.write("                                    <input type=\"number\" class=\"form-control\" name=\"txtIngresosAnuales\" placeholder=\"Ingresos anuales\"\n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getDbIngresosAnuales()!=0 ? obclsPosiblesClientes.getDbIngresosAnuales():"");
+      out.write("\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblCalificacion\">Calificación:</label>\n");
+      out.write("                                    <select class=\"form-control\" name=\"ddlCalificacion\">\n");
+      out.write("                                        <option value=\"1\" ");
+      out.print( obclsPosiblesClientes.obclsCalificacion!=null ? obclsPosiblesClientes.obclsCalificacion.getInCodigo() == 1 ? "selected" : "" : "");
+      out.write(">Ninguno</option>\n");
+      out.write("                                        <option value=\"2\" ");
+      out.print( obclsPosiblesClientes.obclsCalificacion!=null ? obclsPosiblesClientes.obclsCalificacion.getInCodigo() == 2 ? "selected" : "" : "");
+      out.write(">Adquirido</option>\n");
+      out.write("                                        <option value=\"3\" ");
+      out.print( obclsPosiblesClientes.obclsCalificacion!=null ? obclsPosiblesClientes.obclsCalificacion.getInCodigo() == 3 ? "selected" : "" : "");
+      out.write(">Activo</option>\n");
+      out.write("                                        <option value=\"4\" ");
+      out.print( obclsPosiblesClientes.obclsCalificacion!=null ? obclsPosiblesClientes.obclsCalificacion.getInCodigo() == 4 ? "selected" : "" : "");
+      out.write(">Contactado</option>\n");
+      out.write("                                        <option value=\"5\" ");
+      out.print( obclsPosiblesClientes.obclsCalificacion!=null ? obclsPosiblesClientes.obclsCalificacion.getInCodigo() == 5 ? "selected" : "" : "");
+      out.write(">Fallo de mercado</option>\n");
+      out.write("                                        <option value=\"6\" ");
+      out.print( obclsPosiblesClientes.obclsCalificacion!=null ? obclsPosiblesClientes.obclsCalificacion.getInCodigo() == 6 ? "selected" : "" : "");
+      out.write(">Proyecto cancelado</option>\n");
+      out.write("                                        <option value=\"7\" ");
+      out.print( obclsPosiblesClientes.obclsCalificacion!=null ? obclsPosiblesClientes.obclsCalificacion.getInCodigo() == 7 ? "selected" : "" : "");
+      out.write(">Apagar</option>\n");
+      out.write("                                    </select>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblNoParticipacionCorreoElectronico\">\n");
+      out.write("                                        <input type=\"checkbox\"  name=\"chkNoParticipacionCorreoElectronico\" id=\"chkNoParticipacionCorreoElectronico\"/>\n");
+      out.write("                                            No participación correo electronico\n");
+      out.write("                                    </label>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                        <!--FILA-->\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <div class=\"form-row\">\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblIDSkype\">ID de Skype:</label>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"txtIDSkype\" placeholder=\"ID de Skype\"\n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getStIDSkype()!=null ? obclsPosiblesClientes.getStIDSkype():"");
+      out.write("\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-3\">\n");
+      out.write("                                    <label for=\"lblTwitter\">Twitter:</label>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"txtTwitter\" placeholder=\"Twitter\"\n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getStTwitter()!=null ? obclsPosiblesClientes.getStTwitter():"");
+      out.write("\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                                <div class=\"col-md-6\">\n");
+      out.write("                                    <label for=\"lblCorreoElectronicoSecundario\">Correo electronico secundario:</label>\n");
+      out.write("                                    <input type=\"text\" class=\"form-control\" name=\"txtCorreoElectronicoSecundario\" placeholder=\"Correo electronico secundario\"\n");
+      out.write("                                           value=\"");
+      out.print( obclsPosiblesClientes.getStCorreoElectronicoSecundario()!=null ? obclsPosiblesClientes.getStCorreoElectronicoSecundario() :"");
+      out.write("\"/>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                        \n");
+      out.write("                        <!--FILA-->\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <div class=\"form-row\">\n");
+      out.write("                                <!--COLUMNA-->\n");
+      out.write("                                <div class=\"col-12\">\n");
+      out.write("                                    <b>\n");
+      out.write("                                        <i></i>\n");
+      out.write("                                        Registros: ");
+      out.print(lstclsPosiblesClientes.size());
+      out.write("\n");
+      out.write("                                    </b>\n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>\n");
+      out.write("                                    \n");
+      out.write("                        <!--FILA-->\n");
+      out.write("                        <div class=\"form-group\">\n");
+      out.write("                            <div class=\"form-row\">\n");
+      out.write("                                <!--COLUMNA-->\n");
+      out.write("                                <div class=\"col-12\">\n");
+      out.write("                                    <table class=\"table table-bordered table-responsive\">\n");
+      out.write("                                        <!--FILA-->\n");
+      out.write("                                        <tr>\n");
+      out.write("                                            <!--COLUMNA-->\n");
+      out.write("                                            <td>Empresa</td>\n");
+      out.write("                                            <td>Nombre</td>\n");
+      out.write("                                            <td>Apellidos</td>\n");
+      out.write("                                            <td>Titulo</td>\n");
+      out.write("                                            <td>Correo Electronico</td>\n");
+      out.write("                                            <td>Teléfono</td>\n");
+      out.write("                                            <td>Fax</td>\n");
+      out.write("                                            <td>Movil</td>\n");
+      out.write("                                            <td>Sitio Web</td>\n");
+      out.write("                                            <td>Fuente de Posible Cliente</td>\n");
+      out.write("                                            <td>Estado de Posible Cliente</td>\n");
+      out.write("                                            <td>Sector</td>\n");
+      out.write("                                            <td>Cantidad de Empleados</td>\n");
+      out.write("                                            <td>Ingresos Anuales</td>\n");
+      out.write("                                            <td>Calificacion</td>\n");
+      out.write("                                            <td>No Participacion de Correo Electronico</td>\n");
+      out.write("                                            <td>ID de Skype</td>\n");
+      out.write("                                            <td>Twitter</td>\n");
+      out.write("                                            <td>Correo Electronico Secundario</td>\n");
+      out.write("                                            <td>Opciones</td>\n");
+      out.write("                                        </tr>\n");
+      out.write("                                        ");
+
+                                            for(Models.clsPosiblesClientes item: lstclsPosiblesClientes){
+                                                Models.clsFuentePosibleCliente obclsFuentePosibleCliente = item.getObclsFuentePosibleCliente();
+                                                Models.clsEstadoPosibleCliente obclsEstadoPosibleCliente = item.getObclsEstadoPosibleCliente();
+                                                Models.clsSector obclsSector = item.getObclsSector();
+                                                Models.clsCalificacion obclsCalificacion = item.getObclsCalificacion();
+                                            
+                                        
+      out.write("\n");
+      out.write("                                        <tr>\n");
+      out.write("                                            <!--COLUMNA-->\n");
+      out.write("                                            <td>");
+      out.print(item.getStEmpresa());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getStNombre());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getStApellidos());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getStTitulo());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getStCorreoElectronico());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getStTelefono());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getStFax());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getStMovil());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getStSitioWeb());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(obclsFuentePosibleCliente.getStDescripcion());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(obclsEstadoPosibleCliente.getStDescripcion());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(obclsSector.getStDescripcion());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getInCantidadEmpleados());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getDbIngresosAnuales());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(obclsCalificacion.getStDescripcion());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getChNoParticipacionCorreoElectronico());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getStIDSkype());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getStTwitter());
+      out.write("</td>\n");
+      out.write("                                            <td>");
+      out.print(item.getStCorreoElectronicoSecundario());
+      out.write("</td>\n");
+      out.write("                                            <td>\n");
+      out.write("                                                <a class=\"btn btn-warning btn-sm\" \n");
+      out.write("                                                   href=\"PosiblesClientesController?stOpcion=M&CodigoSelecccionado=");
+      out.print(item.getInCodigo());
+      out.write("\">\n");
+      out.write("                                                        Modificar\n");
+      out.write("                                                </a>\n");
+      out.write("                                                <a class=\"btn btn-danger btn-sm\"\n");
+      out.write("                                                    href=\"PosiblesClientesController?stOpcion=E&CodigoSelecccionado=");
+      out.print(item.getInCodigo());
+      out.write("\">Eliminar\n");
+      out.write("                                                </a>\n");
+      out.write("                                            </td>\n");
+      out.write("                                        </tr>\n");
+      out.write("                                        ");
+
+                                            }
+                                        
+      out.write("\n");
+      out.write("                                    </table>                                   \n");
+      out.write("                                </div>\n");
+      out.write("                            </div>\n");
+      out.write("                        </div>   \n");
+      out.write("                    </form>\n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
+      out.write("        </div>\n");
+      out.write("    </body>\n");
+      out.write("</html>\n");
+    } catch (Throwable t) {
+      if (!(t instanceof SkipPageException)){
+        out = _jspx_out;
+        if (out != null && out.getBufferSize() != 0)
+          out.clearBuffer();
+        if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else throw new ServletException(t);
+      }
+    } finally {
+      _jspxFactory.releasePageContext(_jspx_page_context);
+    }
+  }
+}
