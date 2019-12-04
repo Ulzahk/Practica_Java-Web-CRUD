@@ -1,11 +1,12 @@
 # Practica_Java-Web-CRUD
 
-Herramientas Utilizadas:
-• IDE Netbeans
-• Base de datos SQLdbx
-• Github
-• Bloc de Notasa
-• Boostrap
-<p>Hola</p>
+<p>Herramientas Utilizadas:</p>
+<ul>
+  <li>IDE Netbeans </li>
+  <li>Base de datos SQLdbx</li> 
+  <li>Github</li>
+  <li>Bloc de Notasa</li>
+  <li>Boostrap</li>
+</ul>
 
-Nota: Recordar cambiar los datos en el fichero clsConexion en el paquete BL para lograr el funcionamiento del proyecto.
+<p>Nota: Recordar cambiar los datos en el fichero clsConexion en el paquete BL para lograr el funcionamiento del proyecto.</p>
