@@ -69,7 +69,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.jsp">
-                        <i class="far fa-list-alt"></i>
+                        <i class="fas fa-power-off"></i>
                         <span>Salir</span>
                     </a>
                 </li>
