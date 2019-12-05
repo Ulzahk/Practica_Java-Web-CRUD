@@ -1,0 +1,274 @@
+Create table practica_usuarios
+(
+usuaId int identity(1,1)Primary key,
+usuaDescripcion varchar(255),
+usuaLogin varchar(255),
+usuaPassword varchar(255),
+estaCodigo int
+);
+
+Create table practica_estados
+(
+estaId int not null Primary key,
+estaDescripcion varchar(255)
+);
+
+
+Create table practica_fuentes
+(
+fuenId int not null primary key,
+fuenDescripcion varchar(255),
+estaCodigo int
+);
+
+
+Create table practica_estadosclientes
+(
+esclId int not null primary key,
+esclDescripcion varchar(255),
+estaCodigo int
+);
+
+Create table practica_sectores
+(
+sectId int not null primary key,
+sectDescripcion varchar(255),
+estaCodigo int
+);
+
+Create table practica_calificaciones
+(
+caliId int not null primary key,
+caliDescripcion varchar(255),
+estaCodigo int
+);
+
+
+Create table practica_posiblesclientes
+(
+poclCodigo bigint not null primary key,
+poclEmpresa varchar(1000),
+poclNombres varchar(1000),
+poclApellidos varchar(1000),
+poclTitulo varchar(1000),
+poclCorreo varchar(1000),
+poclTelefono varchar(1000),
+poclFax varchar(1000),
+poclMovil varchar(1000),
+poclSitioWeb varchar(1000),
+fuenId int,
+esclId int,
+sectId int,
+poclCantidadEmpleados int,
+poclIngresosAnuales float,
+caliId int,
+poclNoParticipacionCorreoElectronico char(1),
+poclIDSkype varchar(1000),
+poclTwitter varchar(1000),
+poclCorreoSecundario varchar(1000)
+);
+
+Alter table practica_usuarios
+Add foreign key (estaCodigo) references practica_estados(estaId)
+
+Alter table practica_fuentes
+Add foreign key(estaCodigo) references practica_estados(estaId)
+
+Alter table practica_estadosclientes
+Add foreign key(estaCodigo) references practica_estados(estaId)
+
+Alter table practica_sectores
+Add foreign key(estaCodigo) references practica_estados(estaId)
+
+Alter table practica_calificaciones
+Add foreign key(estaCodigo) references practica_estados(estaId)
+
+Alter table practica_posiblesclientes
+Add foreign key(fuenId) references practica_fuentes(fuenId)
+
+Alter table practica_posiblesclientes
+Add foreign key(esclId) references practica_estadosclientes(esclId)
+
+Alter table practica_posiblesclientes
+Add foreign key(sectId) references practica_sectores(sectId)
+
+Alter table practica_posiblesclientes
+Add foreign key(caliId) references practica_calificaciones(caliId)
+
+
+----Procesos---- 
+
+CREATE PROCEDURE spInsertarPosiblesClientes
+@cEmpresa VARCHAR(1000),
+@cNombres VARCHAR(1000),
+@cApellidos VARCHAR(1000),
+@cTitulo VARCHAR(1000),
+@cCorreo VARCHAR(1000),
+@cTelefono VARCHAR(1000),
+@cFax VARCHAR(1000),
+@cMovil VARCHAR(1000),
+@cSitioWeb VARCHAR(1000),
+@nIdFuentes INT,
+@nIdEstadoClientes INT,
+@nIdSector INT,
+@nCantidadEmpleados INT,
+@nIngresosAnuales FLOAT,
+@nIdCalificacion INT,
+@cNoParticipacionCorreoElectronico CHAR(1),
+@cIdSkype VARCHAR(1000),
+@cTwitter VARCHAR(1000),
+@cCorreoSecundario VARCHAR(1000) 
+AS 
+
+DECLARE  @nCodigo INT 
+
+SET @nCodigo  = (SELECT  Coalesce(Max(poclCodigo), 0) + 1 
+				FROM dbo.practica_posiblesclientes);	
+
+INSERT INTO dbo.practica_posiblesclientes (poclCodigo, poclEmpresa, poclNombres, poclApellidos, poclTitulo, poclCorreo, poclTelefono, poclFax, poclMovil, poclSitioWeb, fuenId, esclId, sectId, poclCantidadEmpleados, poclIngresosAnuales, caliId, poclNoParticipacionCorreoElectronico, poclIDSkype, poclTwitter, poclCorreoSecundario)
+VALUES (
+@nCodigo,
+@cEmpresa,
+@cNombres,
+@cApellidos,
+@cTitulo,
+@cCorreo,
+@cTelefono,
+@cFax,
+@cMovil,
+@cSitioWeb,
+@nIdFuentes,
+@nIdEstadoClientes,
+@nIdSector,
+@nCantidadEmpleados,
+@nIngresosAnuales,
+@nIdCalificacion,
+@cNoParticipacionCorreoElectronico,
+@cIdSkype,
+@cTwitter,
+@cCorreoSecundario);  
+
+
+CREATE PROCEDURE spConsultarPosiblesClientes
+AS
+SELECT 	poclCodigo, 
+		poclEmpresa, 
+		poclNombres, 
+		poclApellidos, 
+		poclTitulo, 
+		poclCorreo, 
+		poclTelefono, 
+		poclFax, 
+		poclMovil, 
+		poclSitioWeb, 
+		tbPC.fuenId,
+		tbF.fuenDescripcion, 
+		tbPC.esclId,
+		tbEC.esclDescripcion, 
+		tbPC.sectId,
+		tbS.sectDescripcion, 
+		poclCantidadEmpleados, 
+		poclIngresosAnuales, 
+		tbPC.caliId,
+		tbC.caliDescripcion, 
+		poclNoParticipacionCorreoElectronico, 
+		poclIDSkype, 
+		poclTwitter, 
+		poclCorreoSecundario
+FROM dbo.practica_posiblesclientes tbPC
+JOIN  practica_fuentes tbF ON (tbF.fuenId = tbPC.fuenId)
+JOIN  practica_estadosclientes tbEC ON (tbEC.esclId = tbPC.esclId)
+JOIN  practica_sectores tbS ON (tbS.sectId = tbPC.sectId)
+JOIN  practica_calificaciones tbC ON (tbC.caliId = tbPC.caliId) 
+
+
+CREATE PROCEDURE spConsultarCalificacion
+AS 
+
+
+SELECT 		caliId,
+		caliDescripcion, 
+		estaCodigo
+FROM dbo.practica_calificaciones
+WHERE estaCodigo = 1;
+
+
+CREATE PROCEDURE spConsultarEstadoCliente
+AS 
+SELECT 	esclId, 
+		esclDescripcion, 
+		estaCodigo
+FROM dbo.practica_estadosclientes
+WHERE estaCodigo = 1;
+
+CREATE PROCEDURE spConsultarFuentes
+AS 
+
+SELECT 	fuenId, 
+		fuenDescripcion, 
+		estaCodigo
+FROM dbo.practica_fuentes
+WHERE estaCodigo = 1;
+
+CREATE PROCEDURE spConsultarSectores
+AS 
+
+SELECT 	sectId, 
+		sectDescripcion, 
+		estaCodigo
+FROM dbo.practica_sectores
+WHERE estaCodigo = 1;
+
+
+CREATE PROCEDURE spEliminarPosibleCliente
+	@nCodigo BIGINT
+AS
+DELETE FROM practica_posiblesclientes
+WHERE poclCodigo = @nCodigo;
+
+CREATE PROCEDURE spModificarPosibleCliente
+@nCodigo BIGINT,
+@cEmpresa VARCHAR(1000),
+@cNombres VARCHAR(1000),
+@cApellidos VARCHAR(1000),
+@cTitulo VARCHAR(1000),
+@cCorreo VARCHAR(1000),
+@cTelefono VARCHAR(1000),
+@cFax VARCHAR(1000),
+@cMovil VARCHAR(1000),
+@cSitioWeb VARCHAR(1000),
+@nIdFuentes INT,
+@nIdEstadoClientes INT,
+@nIdSector INT,
+@nCantidadEmpleados INT,
+@nIngresosAnuales FLOAT,
+@nIdCalificacion INT,
+@cNoParticipacionCorreoElectronico CHAR(1),
+@cIdSkype VARCHAR(1000),
+@cTwitter VARCHAR(1000),
+@cCorreoSecundario VARCHAR(1000)
+AS
+
+UPDATE dbo.practica_posiblesclientes
+SET poclEmpresa = @cEmpresa,
+	poclNombres = @cNombres,
+	poclApellidos = @cApellidos,
+	poclTitulo = @cTitulo,
+	poclCorreo = @cCorreo,
+	poclTelefono = @cTelefono,
+	poclFax = @cFax,
+	poclMovil = @cMovil,
+	poclSitioWeb = @cSitioWeb,
+	fuenId = @nIdFuentes,
+	esclId = @nIdSector,
+	sectId = @nIdSector,
+	poclCantidadEmpleados = @nCantidadEmpleados,
+	poclIngresosAnuales = @nIngresosAnuales,
+	caliId = @nIdCalificacion,
+	poclNoParticipacionCorreoElectronico = @cNoParticipacionCorreoElectronico,
+	poclIDSkype = @cIdSkype,
+	poclTwitter = @cTwitter,
+	poclCorreoSecundario = @cCorreoSecundario
+	
+WHERE poclCodigo = @nCodigo;
+
