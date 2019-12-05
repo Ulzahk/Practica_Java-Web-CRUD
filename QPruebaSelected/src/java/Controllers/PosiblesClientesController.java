@@ -192,7 +192,7 @@ public class PosiblesClientesController extends HttpServlet {
             }
 
             //Definir parametros desde el controlador
-            request.setAttribute("stMensaje", bl_clsPosiblesClientes.uptadePosiblesClientes(obclsPosiblesClientes));
+            request.setAttribute("stMensaje", bl_clsPosiblesClientes.updatePosiblesClientes(obclsPosiblesClientes));
             request.setAttribute("stTipo", "success");
             request.setAttribute("lstclsPosiblesClientes", bl_clsPosiblesClientes.getPosiblesClientes());
             
