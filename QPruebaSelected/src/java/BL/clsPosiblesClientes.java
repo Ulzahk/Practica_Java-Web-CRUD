@@ -66,7 +66,7 @@ public class clsPosiblesClientes {
         }
     }
     
-    public String uptadePosiblesClientes(Models.clsPosiblesClientes obclsPosiblesClientes){
+    public String updatePosiblesClientes(Models.clsPosiblesClientes obclsPosiblesClientes){
         
         try {
             
