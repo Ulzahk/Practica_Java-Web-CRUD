@@ -421,6 +421,21 @@ public class PosiblesClientesController extends HttpServlet {
             //Definir parametros desde el controlador
             request.setAttribute("stMensaje", ex.getMessage());
             request.setAttribute("stTipo", "error");
+            
+             //Todos los posibles clientes
+            BL.clsPosiblesClientes bl_obclsPosiblesClientes = new BL.clsPosiblesClientes();
+            request.setAttribute("lstclsPosiblesClientes", bl_obclsPosiblesClientes.getPosiblesClientes());
+            
+             //Lista desplegables
+            BL.clsCalificacion bl_obclsCalificacion = new BL.clsCalificacion();
+            BL.clsEstadoPosibleCliente bl_obclsEstadoPosibleCliente = new BL.clsEstadoPosibleCliente();
+            BL.clsFuentePosibleCliente bl_obclsFuentePosibleCliente = new BL.clsFuentePosibleCliente();
+            BL.clsSector bl_obclsSector = new BL.clsSector();
+
+            request.setAttribute("lstclsCalificacion", bl_obclsCalificacion.getCalificacion());
+            request.setAttribute("lstclsEstadoPosibleCliente", bl_obclsEstadoPosibleCliente.getEstadoPosibleClientes());
+            request.setAttribute("lstclsFuentePosibleCliente", bl_obclsFuentePosibleCliente.getFuentePosibleCliente());
+            request.setAttribute("lstclsSector", bl_obclsSector.getSector());
 
             //Redirecciono y envio los valores
             request.getRequestDispatcher("posiblesclientes.jsp").forward(request, response);
