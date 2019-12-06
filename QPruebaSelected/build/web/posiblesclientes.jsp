@@ -17,6 +17,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     </head>
     <body>
@@ -385,5 +386,17 @@
                 </div>
             </div>
         </div>
+        <script>
+            $('a.btn-danger').click(function(event){
+                event.preventDefault();
+                
+                var r=confirm("¿Esta seguro que quiere eliminar este registro?");
+                if(r== true){
+                    window.location = this.href;
+                }else{
+                    alert("El registro se mantiene intacto");
+                }
+            });   
+        </script>
     </body>
 </html>
