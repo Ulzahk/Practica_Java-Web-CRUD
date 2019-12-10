@@ -5,7 +5,7 @@
   <li>IDE Netbeans </li>
   <li>Base de datos SQLdbx</li> 
   <li>Github</li>
-  <li>Bloc de Notasa</li>
+  <li>Bloc de Notas</li>
   <li>Boostrap</li>
 </ul>
 
